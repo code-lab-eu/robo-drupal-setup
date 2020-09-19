@@ -1,0 +1,16 @@
+{
+    "name": "code-lab-eu/robo-drupal-setup",
+    "description": "Robo tasks to set up a Drupal installation.",
+    "type": "robo-tasks",
+    "require": {
+        "consolidation/robo": "~2"
+    },
+    "license": "LGPL-2.1-or-later",
+    "authors": [
+        {
+            "name": "Pieter Frenssen",
+            "email": "pieter@frenssen.be"
+        }
+    ],
+    "minimum-stability": "dev"
+}
