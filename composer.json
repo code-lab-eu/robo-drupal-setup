@@ -5,6 +5,11 @@
     "require": {
         "consolidation/robo": "~2"
     },
+    "autoload": {
+        "psr-4": {
+            "CodeLab\\Robo\\": "src"
+        }
+    },
     "license": "LGPL-2.1-or-later",
     "authors": [
         {
