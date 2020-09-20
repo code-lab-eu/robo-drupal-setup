@@ -25,6 +25,19 @@ class ConfigFileCommands extends \Robo\Tasks
     }
 
     /**
+     * Generates the drush.yml configuration file.
+     *
+     * The `drush.yml.dist` file will be copied to `drush.yml` and the
+     * environment' variables in it will be replaced.
+     *
+     * @command drush:generate-config
+     */
+    public function drushGenerateConfig(): void
+    {
+        $this->generateConfig('drush/drush.yml.dist', 'drush/drush.yml');
+    }
+
+    /**
      * Generates a configuration file.
      *
      * This will copy the source file to the destination file and replace any
