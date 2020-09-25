@@ -4,12 +4,8 @@ declare(strict_types = 1);
 
 namespace CodeLab\RoboDrupalSetup\Robo\Plugin\Commands;
 
-use CodeLab\RoboDrupalSetup\Robo\Task\Tasks;
-
 class ConfigFileCommands extends \Robo\Tasks
 {
-
-    use Tasks;
 
     /**
      * Generates the behat.yml configuration file.
