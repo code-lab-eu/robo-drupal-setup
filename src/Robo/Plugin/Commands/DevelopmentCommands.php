@@ -19,10 +19,12 @@ class DevelopmentCommands extends \Robo\Tasks
      */
     public function devSetup(): void
     {
-        /** @var \CodeLab\RoboDrupalSetup\Robo\Plugin\Commands\ConfigFileCommands $config_file_commands */
-        $config_file_commands = Robo::getCommandInstance('ConfigFile');
-        $config_file_commands->behatGenerateConfig();
-        $config_file_commands->drushGenerateConfig();
+        // @todo This is duplicating code from ConfigFileCommands. Call the
+        //   commands directly once there is a way to instantiate the command
+        //   class.
+        // @see https://github.com/consolidation/Robo/pull/675
+        $this->taskGenerateConfig('behat.yml.dist', 'behat.yml')->run();
+        $this->taskGenerateConfig('drush/drush.yml.dist', 'drush/drush.yml')->run();
     }
 
 }
