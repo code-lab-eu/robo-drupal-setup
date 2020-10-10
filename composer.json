@@ -3,6 +3,7 @@
     "description": "Robo tasks to set up a Drupal installation.",
     "type": "robo-tasks",
     "require": {
+        "cweagans/composer-patches": "~1.6",
         "consolidation/robo": "~2"
     },
     "autoload": {
@@ -17,5 +18,13 @@
             "email": "pieter@frenssen.be"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "patches": {
+            "consolidation/robo": {
+                "Add a method Robo::getCommandInstance": "https://github.com/consolidation/Robo/pull/675.patch"
+            }
+        }
+    }
 }
