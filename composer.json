@@ -17,5 +17,6 @@
             "email": "pieter@frenssen.be"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

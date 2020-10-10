@@ -4,8 +4,12 @@ declare(strict_types = 1);
 
 namespace CodeLab\RoboDrupalSetup\Robo\Plugin\Commands;
 
+use CodeLab\RoboDrupalSetup\Robo\Task\Tasks;
+
 class ConfigFileCommands extends \Robo\Tasks
 {
+
+    use Tasks;
 
     /**
      * Generates the behat.yml configuration file.
@@ -17,7 +21,7 @@ class ConfigFileCommands extends \Robo\Tasks
      */
     public function behatGenerateConfig(): void
     {
-        $this->generateConfig('behat.yml.dist', 'behat.yml');
+        $this->taskGenerateConfig('behat.yml.dist', 'behat.yml')->run();
     }
 
     /**
@@ -30,40 +34,7 @@ class ConfigFileCommands extends \Robo\Tasks
      */
     public function drushGenerateConfig(): void
     {
-        $this->generateConfig('drush/drush.yml.dist', 'drush/drush.yml');
-    }
-
-    /**
-     * Generates a configuration file.
-     *
-     * This will copy the source file to the destination file and replace any
-     * environment variables in it, as long as they are declared as
-     * `${ENV_VAR}`. If the destination file exists it will be overwritten.
-     *
-     * @param string $source
-     *   The path to the source file, relative to the project root.
-     * @param string $destination
-     *   The path to the destination file, relative to the project root.
-     */
-    protected function generateConfig(string $source, string $destination): void
-    {
-        $replace = [];
-
-        foreach (array_keys($_SERVER) as $env_var) {
-            $value = $_SERVER[$env_var];
-            if (is_scalar($value)) {
-                $replace['${' . $env_var . '}'] = $value;
-            }
-        }
-
-        $this->taskFilesystemStack()
-          ->copy($source, $destination, true)
-          ->run();
-
-        $this->taskReplaceInFile($destination)
-          ->from(array_keys($replace))
-          ->to(array_values($replace))
-          ->run();
+        $this->taskGenerateConfig('drush/drush.yml.dist', 'drush/drush.yml')->run();
     }
 
 }
